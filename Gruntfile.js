@@ -1,6 +1,6 @@
 module.exports = function (grunt) {
 
-  require('load-grunt-tasks')(grunt) //加载所有的任务
+  require('load-grunt-tasks')(grunt); //加载所有的任务
 
   // 1. 初始化插件配置
   grunt.initConfig({
@@ -90,15 +90,15 @@ module.exports = function (grunt) {
           collapseWhitespace: true   //去除多余空格
         },
         files: {
-          'dist/index.min.html': ['src/index.html']
+          'dist/index.html': ['src/index.html']
         }
       }
     },
 
     connect: {
       options: {
-        port: 9000,
-        hostname: '*', //默认就是这个值，可配置为本机某个 IP，localhost 或域名
+        port: 8000,
+        hostname: '192.168.123.170', //默认就是这个值，可配置为本机某个 IP，localhost 或域名
         livereload: 35729  //声明给 watch 监听的端口
       },
 
@@ -106,7 +106,7 @@ module.exports = function (grunt) {
         options: {
           open: true, //自动打开网页 http://
           base: [
-            'src'  //主目录
+            'dist'  //主目录
           ]
         }
       }
@@ -120,11 +120,11 @@ module.exports = function (grunt) {
 
         files: [  //下面文件的改变就会实时刷新网页
           'src/*.html',
-          'src/less/*.less',
-          'src/js/*.js',
+          'src/less/!*.less',
+          'src/js/!*.js',
         ]
       }
-    }
+    },
 
     /*watch: {
       scripts: {    //监视js文件
@@ -149,22 +149,24 @@ module.exports = function (grunt) {
         },
       },
     }*/
-  })
+  });
+
+
   // 2. 加载插件任务
-  // grunt.loadNpmTasks('grunt-contrib-concat')
-  // grunt.loadNpmTasks('grunt-contrib-uglify')
-  // grunt.loadNpmTasks('grunt-babel')
-  // grunt.loadNpmTasks('grunt-contrib-jshint')
-  // grunt.loadNpmTasks('grunt-contrib-less')
-  // grunt.loadNpmTasks('grunt-contrib-cssmin')
-  // grunt.loadNpmTasks('grunt-contrib-htmlmin')
-  // grunt.loadNpmTasks('grunt-contrib-watch')
+  // grunt.loadNpmTasks('grunt-contrib-concat');
+  // grunt.loadNpmTasks('grunt-contrib-uglify');
+  // grunt.loadNpmTasks('grunt-babel');
+  // grunt.loadNpmTasks('grunt-contrib-jshint');
+  // grunt.loadNpmTasks('grunt-contrib-less');
+  // grunt.loadNpmTasks('grunt-contrib-cssmin');
+  // grunt.loadNpmTasks('grunt-contrib-htmlmin');
+  // grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.registerTask('serve', [
     'connect:server',
     'watch'
   ]);
 
   // 3. 注册构建任务
-  // grunt.registerTask('default', ['jshint', 'babel', 'concat', 'uglify', 'less', 'cssmin', 'htmlmin', 'watch'])
-  // grunt.registerTask('myWatch', ['default', 'watch'])
-}
+  // grunt.registerTask('default', ['jshint', 'babel', 'concat', 'uglify', 'less', 'cssmin', 'htmlmin', 'watch']);
+  // grunt.registerTask('myWatch', ['default', 'watch']);
+};
