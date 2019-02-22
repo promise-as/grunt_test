@@ -98,7 +98,9 @@ module.exports = function (grunt) {
     connect: {
       options: {
         port: 8000,
-        hostname: '192.168.123.170', //默认就是这个值，可配置为本机某个 IP，localhost 或域名
+        //默认就是这个值，可配置为本机某个 IP，localhost 或域名
+        hostname: '192.168.3.68', // 公司ip
+        // hostname: '192.168.123.170', // 宿舍ip
         livereload: 35729  //声明给 watch 监听的端口
       },
 
